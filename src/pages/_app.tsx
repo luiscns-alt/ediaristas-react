@@ -2,17 +2,21 @@ import { useEffect } from "react";
 import "@styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { ThemeProvider } from "@material-ui/core";
+import theme from "ui/themes/themes";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  useEffect (() =>{
-    document.querySelector('#jss-server-side')?.remove();
-  }, [])
+  useEffect(() => {
+    document.querySelector("#jss-server-side")?.remove();
+  }, []);
   return (
     <>
       <Head>
         <title>e-diaristas</title>
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 }

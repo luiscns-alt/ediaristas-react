@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
@@ -24,7 +24,9 @@
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",
+    "@storybook/addons": "^6.3.8",
     "@storybook/react": "^6.3.8",
+    "@storybook/theming": "^6.3.8",
     "@types/react": "17.0.24",
     "babel-loader": "^8.2.2",
     "eslint": "7.32.0",

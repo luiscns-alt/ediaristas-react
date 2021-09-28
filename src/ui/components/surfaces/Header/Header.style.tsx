@@ -1,9 +1,8 @@
 import { styled } from "@material-ui/core/styles";
 import { AppBar, Drawer, AppBarProps } from "@material-ui/core";
-import theme from "ui/themes/light-theme";
 
-export const HeaderAppBar = styled((props: AppBarProps) =>(
-    <AppBar position={'sticky'} {...props}/>
+export const HeaderAppBar = styled((props: AppBarProps) => (
+  <AppBar position={"sticky"} {...props} />
 ))`
   &.MuiAppBar-root {
     background-color: ${({ theme }) => theme.palette.background.paper};

@@ -10,6 +10,5 @@ export default {
 
 const Template: ComponentStory<typeof Header> = (args) => <Header />;
 
-
 export const Default = Template.bind({});
 Default.args = {};

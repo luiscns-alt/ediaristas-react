@@ -9,24 +9,26 @@ import Footer from "ui/components/surfaces/Footer/Footer";
 import { AppContainer } from "@styles/pages/_app.styled";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    document.querySelector("#jss-server-side")?.remove();
-  }, []);
-  return (
-    <>
-      <Head>
-        <title>e-diaristas {pageProps.title && ` - ${pageProps.title}`}</title>
-      </Head>
-      <ThemeProvider theme={theme}>
-        <AppContainer>
-          <Header />
-          <main>
-            <Component {...pageProps} />
-          </main>
-          <Footer />
-        </AppContainer>
-      </ThemeProvider>
-    </>
-  );
+    useEffect(() => {
+        document.querySelector("#jss-server-side")?.remove();
+    }, []);
+    return (
+        <>
+            <Head>
+                <title>
+                    e-diaristas {pageProps.title && ` - ${pageProps.title}`}
+                </title>
+            </Head>
+            <ThemeProvider theme={theme}>
+                <AppContainer>
+                    <Header />
+                    <main>
+                        <Component {...pageProps} />
+                    </main>
+                    <Footer />
+                </AppContainer>
+            </ThemeProvider>
+        </>
+    );
 }
 export default MyApp;

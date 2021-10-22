@@ -66,6 +66,13 @@ const theme = createTheme({
                 },
             ],
         },
+        MuiPaper: {
+            styleOverrides: {
+                root: {
+                    boxShadow: "0 0 39px rgba(0, 0, 0, 0.05)",
+                },
+            },
+        },
     },
 });
 

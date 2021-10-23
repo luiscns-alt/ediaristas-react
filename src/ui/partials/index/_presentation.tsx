@@ -31,7 +31,7 @@ const Presentation = () => {
                     </SectionDescription>
                     <SectionButton
                         mui={{ variant: "contained" }}
-                        href={"/encrontar-diarista"}
+                        href={"/encontrar-diarista"}
                     >
                         Encontrar um(a) diarista
                     </SectionButton>

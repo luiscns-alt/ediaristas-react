@@ -6,11 +6,11 @@ import { useState, useMemo } from "react";
 export default function useVerificarProfissionais() {
     const [cep, setCep] = useState(""),
         cepValido = useMemo(() => {
-            ValidationService.cep(cep);
+            return ValidationService.cep(cep);
         }, [cep]),
         [error, setError] = useState(""),
         [buscaFeita, setBuscaFeita] = useState(false),
-        [carrengando, setCarrengando] = useState(false),
+        [carregando, setCarrengando] = useState(false),
         [diaristas, setDiaristas] = useState(
             [] as UserShortInformationInterface[]
         ),
@@ -43,7 +43,7 @@ export default function useVerificarProfissionais() {
         error,
         diaristas,
         buscaFeita,
-        carrengando,
+        carregando,
         diaristasRestantes,
     };
 }

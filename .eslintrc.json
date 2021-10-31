@@ -1,14 +1,23 @@
 {
-  "extends": "next/core-web-vitals",
-  "rules": {
-    "@next/next/no-img-element": "off",
-    // "quotes": [
-    //     "error",
-    //     "double"
-    // ],
-    // "semi": [
-    //     "error",
-    //     "aways"
-    // ]
-  }
+    "extends": [
+        "next",
+        "next/core-web-vitals",
+        "prettier"
+    ],
+    "plugins": [
+        "prettier"
+    ],
+    "rules": {
+        "@next/next/no-img-element": "off",
+        "@next/next/no-document-import-in-page": "off"
+        // "prettier/prettier": "error"
+        // "quotes": [
+        //     "error",
+        //     "double"
+        // ],
+        // "semi": [
+        //     "error",
+        //     "aways"
+        // ]
+    }
 }

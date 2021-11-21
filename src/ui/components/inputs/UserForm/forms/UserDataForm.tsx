@@ -53,7 +53,7 @@ export const UserDataForm: React.FC<UserDataFormProps> = ({
                         style={{ gridArea: 'cpf' }}
                         error={errors?.usuario?.cpf !== undefined}
                         helperText={errors?.usuario?.cpf?.message}
-                        InputProps={readOnly: !cadastro}
+                        InputProps={{ readOnly: !cadastro }}
                     />
                 )}
             />

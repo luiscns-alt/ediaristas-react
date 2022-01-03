@@ -132,4 +132,69 @@ export const FormSchemaService = {
             })
             .defined();
     },
+    detalhesServico() {
+        return yup
+            .object()
+            .shape({
+                data_atendimento: yup
+                    .date()
+                    .transform(DateService.transformDate)
+                    .typeError('Digite uma data válida')
+                    .test(
+                        'atencedencia',
+                        'O agendamento deve ser feito com pelos menos 48 horas de antecedência',
+                        (value, data) => {
+                            if (typeof value === 'object') {
+                                return ValidationService.horarioDeAgendamento(
+                                    value.toJSON().substring(0, 10),
+                                    data.parent.hora_inicio as string
+                                );
+                            }
+                            return false;
+                        }
+                    ),
+                hora_inicio: yup
+                    .string()
+                    .test('hora_valida', 'Digite uma hora valida', (value) =>
+                        ValidationService.hora(value)
+                    )
+                    .test(
+                        'hora_inicio',
+                        'Serviço não deve comecar antes das 06:00',
+                        (value) => {
+                            const [hora] = value?.split(':') || [''];
+                            return +hora >= 6;
+                        }
+                    ),
+                hora_termino: yup
+                    .string()
+                    .test(
+                        'hora_termino',
+                        'O serviço não dever encerrar após as 22:00',
+                        (value) => {
+                            const [hora, minuto] = value?.split(':') || [''];
+                            if (+hora < 22) {
+                                return true;
+                            } else if (+hora === 22) {
+                                return +minuto === 0;
+                            }
+
+                            return false;
+                        }
+                    )
+                    .test(
+                        'tempo_servico',
+                        'O serviço não deve levar mais de 8 horas',
+                        (value, data) => {
+                            const [horaTermino] = value?.split(':') || [''],
+                                [horaInicio] = data.parent?.hora_inicio?.split(
+                                    ':'
+                                ) || [''];
+
+                            return +horaTermino - +horaInicio <= 8;
+                        }
+                    ),
+            })
+            .defined();
+    },
 };

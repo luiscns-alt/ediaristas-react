@@ -1,20 +1,21 @@
-import { styled } from "@material-ui/core/styles";
-import { IconButton } from "@material-ui/core";
+import { styled } from '@material-ui/core/styles';
+import { IconButton } from '@material-ui/core';
 // import { ItemCounterProps } from './ItemCounter';
 
-export const ItemCounterContainer = styled("div")`
+export const ItemCounterContainer = styled('div')`
     position: relative;
     display: inline-grid;
     grid-template-columns: repeat(3, auto);
     gap: ${({ theme }) => theme.spacing(3)};
     align-items: center;
+    justify-content: space-between;
 
     span {
         position: relative;
         color: ${({ theme }) => theme.palette.text.secondary};
     }
     &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 2px;
         right: ${({ theme }) => theme.spacing(2)};

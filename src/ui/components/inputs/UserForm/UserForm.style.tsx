@@ -45,9 +45,7 @@ export const UserData = styled(BaseGrid)`
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas:
         'nome nome nome'
-        'data-nascimento cpf telefone'
-        'confirmar-senha password-strength';
-
+        'data-nascimento cpf telefone';
     ${({ theme }) => theme.breakpoints.down('md')} {
         grid-template-areas:
             'nome'

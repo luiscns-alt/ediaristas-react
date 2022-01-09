@@ -13,6 +13,7 @@ import { UserFormContainer } from 'ui/components/inputs/UserForm/UserForm';
 import { PageFormContainer } from 'ui/components/inputs/UserForm/UserForm.style';
 import DetalhesServico from './_detalhes-servico';
 import CadastroCliente, { LoginCliente } from './_cadastro-cliente';
+import InformacoesPagamento from './_informacoes-pagamento';
 
 // import { Component } from './_contratacao.styled';
 
@@ -25,9 +26,11 @@ const Contratacao: React.FC = () => {
             serviceForm,
             clientForm,
             loginForm,
+            paymentForm,
             onServiceFormSubmit,
             onClientFormSubmit,
             onLoginFormSubmit,
+            onPaymentFormSubmit,
             servicos,
             hasLogin,
             setHasLogin,
@@ -46,7 +49,7 @@ const Contratacao: React.FC = () => {
 
             {step === 2 && (
                 <PageTitle
-                    title={'Precisamos conhecer u, pouco sobre você!'}
+                    title={'Precisamos conhecer um pouco sobre você!'}
                     subtitle={
                         !hasLogin ? (
                             <span>
@@ -110,6 +113,18 @@ const Contratacao: React.FC = () => {
                                 <CadastroCliente onBack={() => setStep(1)} />
                             </form>
                         </FormProvider>
+
+                        {step === 3 && (
+                            <FormProvider {...paymentForm}>
+                                <form
+                                    onSubmit={paymentForm.handleSubmit(
+                                        onPaymentFormSubmit
+                                    )}
+                                >
+                                    <InformacoesPagamento />
+                                </form>
+                            </FormProvider>
+                        )}
                     </Paper>
 
                     <SideInformation

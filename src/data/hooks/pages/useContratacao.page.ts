@@ -8,10 +8,11 @@ import {
     CadastroClienteFormDataInterface,
     LoginFormDataInterface,
     NovaDiariaFormDataInterface,
+    PagamentoFormDataInterface,
 } from 'data/@types/FormInterface';
 
 export default function useContratacao() {
-    const [step, setStep] = useState(2),
+    const [step, setStep] = useState(3),
         [hasLogin, setHasLogin] = useState(false),
         [loginError, setLoginError] = useState(''),
         breadcrumbItems = ['Detalhes da diária', 'Identificação', 'Pagamento'],
@@ -28,6 +29,9 @@ export default function useContratacao() {
                     FormSchemaService.newContact()
                 )
             ),
+        }),
+        paymentForm = useForm<PagamentoFormDataInterface>({
+            resolver: yupResolver(FormSchemaService.payment()),
         }),
         loginForm = useForm<LoginFormDataInterface>({
             resolver: yupResolver(FormSchemaService.login()),
@@ -67,6 +71,10 @@ export default function useContratacao() {
         console.log(data);
     }
 
+    function onPaymentFormSubmit(data: PagamentoFormDataInterface) {
+        console.log(data);
+    }
+
     return {
         step,
         setStep,
@@ -81,5 +89,7 @@ export default function useContratacao() {
         loginForm,
         onLoginFormSubmit,
         loginError,
+        onPaymentFormSubmit,
+        paymentForm,
     };
 }

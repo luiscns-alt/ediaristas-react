@@ -1,8 +1,8 @@
 import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-import { UserData } from '../UserForm.style';
 import TextField from '../../TextField/TextField';
 import TextFieldMask from '../../TextFieldMask/TextFieldMask';
+import { UserData } from '../UserForm.style';
 
 export interface UserDataFormProps {
     cadastro?: boolean;
@@ -16,16 +16,18 @@ export const UserDataForm: React.FC<UserDataFormProps> = ({
         formState: { errors },
         control,
     } = useFormContext();
+
     return (
         <UserData>
             <TextField
                 label={'Nome completo'}
                 defaultValue={''}
-                style={{ grid: 'nome' }}
+                style={{ gridArea: 'nome' }}
                 {...register('usuario.nome_completo')}
                 error={errors?.usuario?.nome_completo !== undefined}
                 helperText={errors?.usuario?.nome_completo?.message}
             />
+
             <Controller
                 name={'usuario.nascimento'}
                 defaultValue={''}
@@ -41,6 +43,7 @@ export const UserDataForm: React.FC<UserDataFormProps> = ({
                     />
                 )}
             />
+
             <Controller
                 name={'usuario.cpf'}
                 defaultValue={''}
@@ -57,6 +60,7 @@ export const UserDataForm: React.FC<UserDataFormProps> = ({
                     />
                 )}
             />
+
             <Controller
                 name={'usuario.telefone'}
                 defaultValue={''}

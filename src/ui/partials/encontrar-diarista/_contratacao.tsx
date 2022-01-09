@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Paper } from '@material-ui/core';
+import { Button, Paper, Typography } from '@material-ui/core';
 import { FormProvider } from 'react-hook-form';
 
 import useIsMobile from 'data/hooks/uselsMobile';
@@ -12,7 +12,7 @@ import SideInformation from 'ui/components/data-display/SideInformation/SideInfo
 import { UserFormContainer } from 'ui/components/inputs/UserForm/UserForm';
 import { PageFormContainer } from 'ui/components/inputs/UserForm/UserForm.style';
 import DetalhesServico from './_detalhes-servico';
-import CadastroCliente from './_cadastro-cliente';
+import CadastroCliente, { LoginCliente } from './_cadastro-cliente';
 
 // import { Component } from './_contratacao.styled';
 
@@ -24,11 +24,14 @@ const Contratacao: React.FC = () => {
             breadcrumbItems,
             serviceForm,
             clientForm,
+            loginForm,
             onServiceFormSubmit,
             onClientFormSubmit,
+            onLoginFormSubmit,
             servicos,
             hasLogin,
             setHasLogin,
+            loginError,
         } = useContratacao();
     return (
         <div>
@@ -77,6 +80,25 @@ const Contratacao: React.FC = () => {
                                 <DetalhesServico servicos={servicos} />
                             </form>
                         </FormProvider>
+
+                        {step === 2 && hasLogin && (
+                            <FormProvider {...loginForm}>
+                                <form
+                                    onSubmit={clientForm.handleSubmit(
+                                        onLoginFormSubmit
+                                    )}
+                                >
+                                    <Typography
+                                        color={'error'}
+                                        align={'center'}
+                                        sx={{ mb: 2 }}
+                                    >
+                                        {loginError}
+                                    </Typography>
+                                    <LoginCliente onBack={() => setStep(1)} />
+                                </form>
+                            </FormProvider>
+                        )}
 
                         <FormProvider {...clientForm}>
                             <form

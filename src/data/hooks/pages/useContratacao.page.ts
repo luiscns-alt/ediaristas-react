@@ -12,7 +12,7 @@ import {
 } from 'data/@types/FormInterface';
 
 export default function useContratacao() {
-    const [step, setStep] = useState(3),
+    const [step, setStep] = useState(4),
         [hasLogin, setHasLogin] = useState(false),
         [loginError, setLoginError] = useState(''),
         breadcrumbItems = ['Detalhes da diária', 'Identificação', 'Pagamento'],

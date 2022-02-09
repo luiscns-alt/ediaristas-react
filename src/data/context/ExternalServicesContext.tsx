@@ -4,6 +4,7 @@ import {
     useExternalServiceReducer,
 } from 'data/reducers/ExtrenalServicesReducer';
 import React, { createContext } from 'react';
+import { UserProvider } from './UserContext';
 
 const initialValue: ExternalServicesReducerInterface = {
     externalServicesState: initialState,
@@ -17,7 +18,7 @@ export const ExternalServicesProvider: React.FC = ({ children }) => {
 
     return (
         <ExternalServicesContext.Provider value={reducer}>
-            {children}
+            <UserProvider>{children}</UserProvider>
         </ExternalServicesContext.Provider>
     );
 };

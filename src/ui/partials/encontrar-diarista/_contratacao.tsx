@@ -1,5 +1,11 @@
 import React from 'react';
-import { Button, Paper, Typography } from '@material-ui/core';
+import {
+    Button,
+    Paper,
+    Typography,
+    CircularProgress,
+    Container,
+} from '@material-ui/core';
 import { FormProvider } from 'react-hook-form';
 
 import useIsMobile from 'data/hooks/uselsMobile';
@@ -38,6 +44,14 @@ const Contratacao: React.FC = () => {
             setHasLogin,
             loginError,
         } = useContratacao();
+
+    if (!servicos || servicos.length < 1) {
+        return (
+            <Container sx={{ textAlign: 'center', my: 10 }}>
+                <CircularProgress></CircularProgress>
+            </Container>
+        );
+    }
     return (
         <div>
             {!isMobile && <SafeEnvironment />}

@@ -1,14 +1,14 @@
-import { UserShortInformationInterface } from "data/@types/UserInterface";
-import { ApiService } from "data/services/ApiService";
-import { ValidationService } from "data/services/ValidationService";
-import { useState, useMemo } from "react";
+import { UserShortInformationInterface } from 'data/@types/UserInterface';
+import { ApiService } from 'data/services/ApiService';
+import { ValidationService } from 'data/services/ValidationService';
+import { useState, useMemo } from 'react';
 
 export default function useVerificarProfissionais() {
-    const [cep, setCep] = useState(""),
+    const [cep, setCep] = useState(''),
         cepValido = useMemo(() => {
             return ValidationService.cep(cep);
         }, [cep]),
-        [error, setError] = useState(""),
+        [error, setError] = useState(''),
         [buscaFeita, setBuscaFeita] = useState(false),
         [carregando, setCarrengando] = useState(false),
         [diaristas, setDiaristas] = useState(
@@ -19,18 +19,18 @@ export default function useVerificarProfissionais() {
     async function buscarProfissionais(cep: string) {
         setBuscaFeita(false);
         setCarrengando(true);
-        setError("");
+        setError('');
         try {
             const { data } = await ApiService.get<{
                 diaristas: UserShortInformationInterface[];
                 quantidade_diaristas: number;
-            }>(`/api/diaristas/localidades?cep=${cep.replace(/\D/g, "")}`);
+            }>(`/api/diaristas/localidades?cep=${cep.replace(/\D/g, '')}`);
             setBuscaFeita(true);
             setDiaristas(data.diaristas);
             setDiaristasRestantes(data.quantidade_diaristas);
             setCarrengando(false);
         } catch (error) {
-            setError("CEP não encontrado");
+            setError('CEP não encontrado');
             setCarrengando(false);
         }
     }

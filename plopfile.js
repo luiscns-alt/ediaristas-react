@@ -1,6 +1,6 @@
-const pageGenerator = require("./plop/page/page-generator");
-const partialGenerator = require("./plop/page/partial-generator");
-const componentGenerator = require("./plop/component/component-generator");
+const pageGenerator = require('./plop/page/page-generator');
+const partialGenerator = require('./plop/page/partial-generator');
+const componentGenerator = require('./plop/component/component-generator');
 
 module.exports = function (plop) {
     Object.keys(handlers).forEach((functionName) => {
@@ -14,7 +14,7 @@ module.exports = function (plop) {
 
 const handlers = {
     getPath(folder, name) {
-        let path = "";
+        let path = '';
         if (folder) {
             path += `${folder.toLowerCase()}/`;
         }
@@ -23,10 +23,10 @@ const handlers = {
     },
     createFilename(componentName) {
         return componentName
-            .replace(/([A-Z])/g, " $1")
+            .replace(/([A-Z])/g, ' $1')
             .trim()
             .toLowerCase()
-            .split(" ")
-            .join("-");
+            .split(' ')
+            .join('-');
     },
 };
